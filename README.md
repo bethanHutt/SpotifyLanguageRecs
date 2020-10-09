@@ -19,3 +19,6 @@
 ### Extension 2
 + Align playlist to user tastes as much as possible
 + Optional - requires user login
+
+### Extension 3
++ Grab more music by doing multiple requests going back in time
