@@ -8,7 +8,7 @@ sys.path = [ROOTDIR] + sys.path
 
 import settings
 
-from spotify import spotify_charts_requests as spotcharts
+from spotify import chart_requester as spotcharts
 
 
 @pytest.fixture
@@ -45,7 +45,3 @@ def test_make_request_returns_response_object(chartrequester):
 def test_make_request_returns_good_response(chartrequester):
     response = chartrequester.make_request()
     assert response.status_code == 200
-
-
-if __name__ == '__main__':
-    pass

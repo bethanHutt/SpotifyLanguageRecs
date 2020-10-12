@@ -14,7 +14,9 @@ class ChartRequester(object):
         response = session.get(self.url)
 
         if test_response_validity(response=response):
-            return response
+            return response.content
+
+        return None
 
 
 def test_response_validity(response):

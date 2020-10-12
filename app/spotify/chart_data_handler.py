@@ -7,11 +7,10 @@ class DataHandler():
         self.song_data = pd.DataFrame()
 
     def append_data(self, csv):
-        df = pd.read_csv(io.StringIO(csv.decode("utf-8")), skiprows=1)
-
+        df = pd.read_csv(io.StringIO(csv.decode('utf-8')), skiprows=1)
         df = clean_data(df=df)
 
-        self.song_data.append(df)
+        self.song_data = self.song_data.append(df)
 
 
 def clean_data(df):
@@ -24,4 +23,7 @@ def clean_data(df):
 
 
 def strip_song_id(url):
+    if not (isinstance(url, str) and '/' in url):
+        return None
+
     return url.split('/')[-1]
