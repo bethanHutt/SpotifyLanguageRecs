@@ -13,12 +13,17 @@
 + Add to user account if provided
 
 ### Extension 1
-+ Check nationality of artist/language of track to ensure track is in correct language
-+ Google translate API for track and artist name?
+Get viral hits as well as chart hits
 
 ### Extension 2
+<!-- + Check nationality of artist/language of track to ensure track is in correct language -->
+<!-- + Google translate API for track and artist name? -->
++ Get 'top cultural export countries' and eliminate any corresponding tracks from
+    their playlists, this getting rid of the international hits.
+
+### Extension 3
 + Align playlist to user tastes as much as possible
 + Optional - requires user login
 
-### Extension 3
+### Extension 4
 + Grab more music by doing multiple requests going back in time
