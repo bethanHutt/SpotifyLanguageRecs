@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import jsonify
+from flask import url_for
 from flask import render_template
 
 from spotify import chart_data_handler
@@ -33,10 +34,15 @@ def home():
     return render_template('home.html')
 
 
+@ app.route('/test')
+def test():
+    return render_template('basic.html')
+
+
 @ app.route('/get_tracks')
 def get_tracks():
     artists = list(set(get_artists().values()))
-    return render_template('get_tracks.html', artists=artists)
+    return render_template('get_tracks.html', artists=artists, title='Tracks')
 
 
 if __name__ == '__main__':
