@@ -34,11 +34,6 @@ def home():
     return render_template('home.html')
 
 
-@ app.route('/test')
-def test():
-    return render_template('basic.html')
-
-
 @ app.route('/get_tracks')
 def get_tracks():
     artists = list(set(get_artists().values()))
