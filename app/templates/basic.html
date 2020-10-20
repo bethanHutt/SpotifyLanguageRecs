@@ -29,9 +29,17 @@
             background-size: cover;
         }
         body, html {height: 100%}
+
+        .dropdown-item.active, .dropdown-item:active {
+            color:#fff;
+            text-decoration:none;
+            background-color:#616161
+            }
+
     </style>
 
     <body>
+
         <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
             <div class="w3-display-middle">
                 <div class="w3-display-middle" style="white-space:nowrap;">
@@ -44,10 +52,10 @@
                             Choose Your Language:
                         </button>
 
-                        <div class="dropdown-menu text-left w3-light-grey" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Japanese</a></li>
-                            <li><a class="dropdown-item" href="#">German</a></li>
-                            <li><a class="dropdown-item" href="#">Korean</a></li>
+                        <div class="dropdown-menu text-left w3-grey" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Japanese</a>
+                            <a class="dropdown-item" href="#">German</a>
+                            <a class="dropdown-item" href="#">Korean</a>
                         </div>
                     </div>
 
