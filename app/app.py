@@ -1,3 +1,6 @@
+import os
+import json
+
 from flask import Flask
 from flask import jsonify
 from flask import url_for
@@ -31,7 +34,13 @@ def get_artists():
 @ app.route('/')
 @ app.route('/home')
 def home():
-    return render_template('home.html')
+    script_path = os.path.dirname(__file__)
+    json_path = os.path.join(script_path, 'languages.json')
+    with open(json_path) as json_file:
+        json_data = json.load(json_file)
+
+    countries = list(json_data.keys())
+    return render_template('home.html', countries=countries)
 
 
 @ app.route('/get_tracks')
