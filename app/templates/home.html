@@ -29,7 +29,8 @@
     <script>
         function load_tracks()
         {
-            location.href = "{{ url_for('get_tracks') }}";
+            var $dropdown = document.getElementById("dropdownMenuButton")
+            location.href = {{ url_for('get_tracks', country=$dropdown.find('button').text()) }};
         }
     </script>
 
