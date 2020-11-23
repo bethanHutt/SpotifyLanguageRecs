@@ -6,7 +6,7 @@
         function load_tracks()
         {
             var selected_country = $("#dropdownMenuButton")[0].innerText;
-            location.href='{{ url_for("get_tracks", country="COUNTRY") }}'.replace(
+            location.href='{{ url_for("home", country="COUNTRY") }}'.replace(
                 "COUNTRY", selected_country)
         }
 
@@ -25,7 +25,7 @@
     </script>
 
     <div class="w3-display-middle" style="white-space:nowrap;">
-        <span class="w3-center w3-padding-large w3-dark-grey w3-xlarge w3-wide w3-animate-opacity">SPOTI <span class="w3-hide-small">FRANCA</span> </span>
+        <span class="w3-center w3-padding-large w3-dark-grey w3-xlarge w3-wide w3-animate-opacity">LEXIFY</span>
 
         <div class="dropdown" style="padding-top: 100px;">
             <button class="w3-button w3-padding w3-blue-grey w3-dropdown-click text-left"
@@ -36,14 +36,16 @@
 
             <div class="dropdown-menu scrollable-menu text-left w3-grey" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
                 {% for country in countries %}
-                    <a class="dropdown-item" href=#>{{ country }}</a>
+                    <a class="dropdown-item" id="{{ countries[country] }}" href=#>{{ country }}</a>
                 {% endfor %}
             </div>
         </div>
-
-        <button class="w3-button w3-dark-grey w3-center w3-section" onclick=load_tracks()>
-            Generate Playlist
-        </button>
+        <form method="post" onsubmit="load_tracks()" class="inline">
+            <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+            <button class="w3-button w3-dark-grey w3-center w3-section" type="submit" name="submit_param" value="submit_value" class="link-button">
+                Generate Playlist
+            </button>
+        </form>
 
     </div>
 
