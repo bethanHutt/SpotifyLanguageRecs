@@ -1,55 +1,21 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <!-- script to load tracks with country chosen on dropdown menu -->
-    <script>
-        function load_tracks()
-        {
-            var selected_country = $("#dropdownMenuButton")[0].innerText;
-            location.href='{{ url_for("home", country="COUNTRY") }}'.replace(
-                "COUNTRY", selected_country)
-        }
 
-    </script>
-
-    <!-- script to change dropdown menu to selected choice -->
-    <script>
-        $( document ).ready(function() {
-            $('.dropdown').each(function (key, dropdown) {
-                var $dropdown = $(dropdown);
-                $dropdown.find('.dropdown-menu a').on('click', function () {
-                    $dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
-                });
-            });
-        });
-    </script>
 
     <div class="w3-display-middle" style="white-space:nowrap;">
         <span class="w3-center w3-padding-large w3-dark-grey w3-xlarge w3-wide w3-animate-opacity">LEXIFY</span>
-
-        <div class="dropdown" style="padding-top: 100px;">
-            <button class="w3-button w3-padding w3-blue-grey w3-dropdown-click text-left"
-                type="button" style="min-width: 200px" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Choose A Country:
-            </button>
-
-            <div class="dropdown-menu scrollable-menu text-left w3-grey" id="dropdownMenu" aria-labelledby="dropdownMenuButton">
-                {% for country in countries %}
-                    <a class="dropdown-item" id="{{ countries[country] }}" href=#>{{ country }}</a>
-                {% endfor %}
-            </div>
+        <div style="padding-top: 50px;">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.country.label }}<br>
+                    {{ form.country(class="w3-button w3-padding w3-blue-grey w3-dropdown-click text-left")}}
+                </p>
+                <p>{{ form.submit(class="w3-button w3-dark-grey w3-center w3-section") }}</p>
+            </form>
         </div>
-        <form method="post" onsubmit="load_tracks()" class="inline">
-            <input type="hidden" name="extra_submit_param" value="extra_submit_value">
-            <button class="w3-button w3-dark-grey w3-center w3-section" type="submit" name="submit_param" value="submit_value" class="link-button">
-                Generate Playlist
-            </button>
-        </form>
-
     </div>
-
-
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
