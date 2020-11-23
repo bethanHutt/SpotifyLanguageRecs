@@ -1,7 +1,54 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Top Japanese Artists:</h1>
-    {% for artist in artists %}
-        <h2>{{ artist }}</h2>
-    {% endfor %}
+
+    <h1>Top Tracks in {{ country }}:</h1>
+
+    <body class="text-break">
+        <div class="container text-center">
+            <p>This is the new playlist we created for you based on your selected tracks and preferences</p>
+        </div>
+
+        <ul class="list-group w3-content w3-container w3-padding-64" id="portfolio"">
+            {% for artist in artists %}
+                <li class="list-group-item list-group-item d-flex justify-content-between align-items-center track w3-opacity"
+                    value="{{ track_id }}">
+                    <span>{{ artist }}</span>
+<!--                     <div>
+                        <img src="{{ track_image_url }}" style="max-width: 47px;" alt="">
+                    </div> -->
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div>
+            <p class="text-center text-white">Give a name to your new playlist:</p>
+        </div>
+
+        <div class="text-center"
+             style="text-align: center;margin: 17px 20% 50px;">
+            <form action="/save-playlist" method="POST">
+                <div class="text-center">
+                    <input type="text" id="playlist_name_input" name="playlist_name" value="">
+                </div>
+                <button class="btn btn-primary" id="save-playlist-btn" type="submit">
+                    Save playlist
+                </button>
+            </form>
+        </div>
+
+
+        <div>
+            <form action="/refresh" method="post">
+                <p class="text-center text-white not-happy">
+                    Not happy with this playlist?
+                    <span>
+                    <a href="/refresh">
+                        Get a new one!
+                    </a>
+                </span>
+                </p>
+            </form>
+        </div>
+    </body>
+
 {% endblock content %}

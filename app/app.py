@@ -54,17 +54,24 @@ def home():
         chosen_country = form.country.data
         country_code = countries.get(chosen_country)
 
-        return redirect(url_for('get_tracks', country=country_code))
+        return redirect(url_for(
+            'get_tracks',
+            country_code=country_code,
+            country=chosen_country))
 
     return render_template('home.html', form=form)
 
 
-@ app.route('/get_tracks/<string:country>')
-def get_tracks(country):
+@ app.route('/get_tracks/<string:country_code>')
+def get_tracks(country_code):
+    country = request.args.get('country')
+    artists = list(set(get_artists(country_code=country_code).values()))
 
-    artists = list(set(get_artists(country_code=country).values()))
-
-    return render_template('get_tracks.html', artists=artists, title='Tracks')
+    return render_template(
+        'get_tracks.html',
+        artists=artists,
+        country=country,
+        title='Tracks')
 
 
 if __name__ == '__main__':
