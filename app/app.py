@@ -69,6 +69,7 @@ def get_tracks(country_code):
 
     return render_template(
         'get_tracks.html',
+        # 'example.html',
         artists=artists,
         country=country,
         title='Tracks')
